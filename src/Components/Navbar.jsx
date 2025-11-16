@@ -46,41 +46,62 @@ const Navbar = () => {
         </div>
       </motion.div>
 
-      {/* Sidebar */}
+      {/* Sidebar + Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed top-0 right-0 h-full w-full sm:w-[40%] bg-gradient-to-b from-slate-500 to-slate-700 text-[#64748b] flex flex-col justify-between items-center py-10 shadow-lg z-50"
-          >
-            {/* Close Icon */}
-            <div
-              className="absolute top-5 left-5 cursor-pointer"
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black z-40"
               onClick={() => setIsOpen(false)}
+            />
+
+            {/* Sidebar */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="fixed top-0 right-0 h-[85%] w-[80%] sm:w-[40%] bg-gradient-to-b from-slate-600 to-slate-800 text-[#FEEBDD] flex flex-col justify-between items-center py-10 shadow-2xl rounded-l-2xl backdrop-blur-md z-50"
             >
-              <BiX className="text-3xl text-[#FEEBDD]" />
-            </div>
+              {/* Close Icon */}
+              <div
+                className="absolute top-5 left-5 cursor-pointer"
+                onClick={() => setIsOpen(false)}
+              >
+                <BiX className="text-3xl text-[#FEEBDD]" />
+              </div>
 
-            {/* Links */}
-            <div className="flex flex-col space-y-6 mt-10 text-[#FEEBDD] font-inter">
-              <Link to="home" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">Home</Link>
-              <Link to="services" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">Services</Link>
-              <Link to="order" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">Order</Link>
-              <Link to="about" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">About</Link>
-              <Link to="footer" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">Footer</Link>
-            </div>
+              {/* Links */}
+              <div className="flex flex-col space-y-6 mt-10 text-[#FEEBDD] font-inter">
+                {["home", "services", "order", "about", "footer"].map((item, i) => (
+                  <Link
+                    key={i}
+                    to={item}
+                    smooth
+                    duration={700}
+                    className="hover:text-primary font-bold cursor-pointer transition-transform hover:scale-110"
+                  >
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </Link>
+                ))}
+              </div>
 
-            {/* Social Icons */}
-            <div className="flex flex-col space-y-6 mb-10 text-[#FEEBDD]">
-              <FaFacebook className="text-2xl cursor-pointer hover:text-primary" />
-              <FaTwitter className="text-2xl cursor-pointer hover:text-primary" />
-              <FaGithub className="text-2xl cursor-pointer hover:text-primary" />
-              <FaInstagram className="text-2xl cursor-pointer hover:text-primary" />
-            </div>
-          </motion.div>
+              {/* Social Icons */}
+              <div className="flex flex-row gap-6 mb-10 text-[#FEEBDD]">
+                {[FaFacebook, FaTwitter, FaGithub, FaInstagram].map((Icon, i) => (
+                  <Icon
+                    key={i}
+                    className="text-2xl cursor-pointer hover:text-primary hover:scale-125 transition-transform"
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
