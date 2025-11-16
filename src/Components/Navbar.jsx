@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { BiX, BiMenu } from "react-icons/bi";
 import { FaFacebook, FaTwitter, FaGithub, FaInstagram } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import {Link} from 'react-scroll'
+import { Link } from "react-scroll";
 
 const Navbar = () => {
-const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -22,14 +22,14 @@ const [isOpen, setIsOpen] = useState(false);
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="text-3xl font-black uppercase cursor-pointer"
+            className="text-3xl font-black uppercase cursor-pointer font-poppins"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <b className="text-primary">Caffine</b> Cove
           </motion.h1>
 
-          {/* Menu Icon (hide when sidebar is open) */}
+          {/* Menu Icon */}
           {!isOpen && (
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -46,7 +46,7 @@ const [isOpen, setIsOpen] = useState(false);
         </div>
       </motion.div>
 
-      {/* Sidebar (right side) */}
+      {/* Sidebar */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -54,7 +54,7 @@ const [isOpen, setIsOpen] = useState(false);
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed top-0 right-0 h-full w-[8%] bg-gradient-to-b from-slate-500 to-slate-700  text-[#64748b] flex flex-col justify-between items-center py-10 shadow-lg z-50"
+            className="fixed top-0 right-0 h-full w-full sm:w-[40%] bg-gradient-to-b from-slate-500 to-slate-700 text-[#64748b] flex flex-col justify-between items-center py-10 shadow-lg z-50"
           >
             {/* Close Icon */}
             <div
@@ -64,21 +64,21 @@ const [isOpen, setIsOpen] = useState(false);
               <BiX className="text-3xl text-[#FEEBDD]" />
             </div>
 
-            {/* Sidebar content */}
-            <div className="flex flex-col space-y-6 mt-10 text-[#FEEBDD]">
-              <Link to='home' smooth={true} duration={700} className="hover:text-primary font-bold cursor-pointer">Home</Link>
-              <Link to='services' smooth={true} duration={700} className="hover:text-primary font-bold cursor-pointer">Services</Link>
-              <Link to='order' smooth={true} duration={700} className="hover:text-primary font-bold cursor-pointer">Order</Link>
-              <Link to='about' smooth={true} duration={700} className="hover:text-primary font-bold cursor-pointer">About</Link>
-              <Link to='footer' smooth={true} duration={700} className="hover:text-primary font-bold cursor-pointer">Footer</Link>
+            {/* Links */}
+            <div className="flex flex-col space-y-6 mt-10 text-[#FEEBDD] font-inter">
+              <Link to="home" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">Home</Link>
+              <Link to="services" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">Services</Link>
+              <Link to="order" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">Order</Link>
+              <Link to="about" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">About</Link>
+              <Link to="footer" smooth duration={700} className="hover:text-primary font-bold cursor-pointer">Footer</Link>
             </div>
 
-            {/* Social icons */}
+            {/* Social Icons */}
             <div className="flex flex-col space-y-6 mb-10 text-[#FEEBDD]">
-              <FaFacebook className="text-2xl cursor-pointer hover:text-primary font-bold" />
-              <FaTwitter className="text-2xl cursor-pointer hover:text-primary font-bold" />
-              <FaGithub className="text-2xl cursor-pointer hover:text-primary font-bold" />
-              <FaInstagram className="text-2xl cursor-pointer hover:text-primary font-bold" />
+              <FaFacebook className="text-2xl cursor-pointer hover:text-primary" />
+              <FaTwitter className="text-2xl cursor-pointer hover:text-primary" />
+              <FaGithub className="text-2xl cursor-pointer hover:text-primary" />
+              <FaInstagram className="text-2xl cursor-pointer hover:text-primary" />
             </div>
           </motion.div>
         )}
@@ -88,4 +88,3 @@ const [isOpen, setIsOpen] = useState(false);
 };
 
 export default Navbar;
-
