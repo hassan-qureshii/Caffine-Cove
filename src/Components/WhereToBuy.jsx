@@ -6,7 +6,7 @@ import Map from "../assets/Map.png";
 
 const WhereToBuy = () => {
   return (
-    <div id="order">
+    <div id="order" className="overflow-x-hidden">
       <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-[#FEEBDD]">
         {/* Header */}
         <div className="max-w-[1024px] mx-auto py-12 px-4">
@@ -27,30 +27,46 @@ const WhereToBuy = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: false, amount: 0.3 }}
-              className="flex flex-col gap-4 w-full"
+              className="flex flex-col gap-4 w-full overflow-x-hidden"
             >
               {/* Name */}
               <div className="flex items-center border rounded-md p-2 max-w-[250px] w-full">
                 <FaUser className="text-amber-50 mr-2" />
-                <input type="text" placeholder="Name" className="outline-none flex-1" />
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="outline-none flex-1 bg-transparent text-[#FEEBDD]"
+                />
               </div>
 
               {/* Email */}
               <div className="flex items-center border rounded-md p-2 max-w-[300px] w-full">
                 <MdEmail className="text-amber-50 mr-2" />
-                <input type="email" placeholder="Email" className="outline-none flex-1" />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="outline-none flex-1 bg-transparent text-[#FEEBDD]"
+                />
               </div>
 
               {/* Location */}
               <div className="flex items-center border rounded-md p-2 max-w-[350px] w-full">
                 <FaMapMarkerAlt className="text-amber-50 mr-2" />
-                <input type="text" placeholder="Location" className="outline-none flex-1" />
+                <input
+                  type="text"
+                  placeholder="Location"
+                  className="outline-none flex-1 bg-transparent text-[#FEEBDD]"
+                />
               </div>
 
               {/* Zip Code */}
               <div className="flex items-center border rounded-md p-2 max-w-[400px] w-full">
                 <FaRegAddressCard className="text-amber-50 mr-2" />
-                <input type="number" placeholder="Zip Code" className="outline-none flex-1" />
+                <input
+                  type="number"
+                  placeholder="Zip Code"
+                  className="outline-none flex-1 bg-transparent text-[#FEEBDD]"
+                />
               </div>
 
               {/* Button */}
@@ -65,9 +81,13 @@ const WhereToBuy = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: false, amount: 0.3 }}
-              className="w-full"
+              className="w-full overflow-x-hidden"
             >
-              <img src={Map} alt="Map" className="w-full h-[300px] object-contain" />
+              <img
+                src={Map}
+                alt="Map"
+                className="w-full h-[300px] object-contain rounded-xl shadow-lg"
+              />
             </motion.div>
           </div>
         </div>
